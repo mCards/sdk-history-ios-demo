@@ -1,5 +1,5 @@
 {
-  "originHash" : "467cc8270a85bbecae9f4045b368044d37fd6e2c2caab916921f0be44c2e71b3",
+  "originHash" : "be61a71d0277f5183a8c96b049b084e008633cb1738aa79e6dbe87cc1d4b67fd",
   "pins" : [
     {
       "identity" : "sdk-auth-ios-framework",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "72a375000a2ef248731ba609c336e6a94269f9e4",
         "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "sdk-cards-ios-framework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mCards/sdk-cards-ios-framework.git",
+      "state" : {
+        "revision" : "3d0ac4c66164e76986d9dc9321e442064c0cd61a",
+        "version" : "0.0.13"
       }
     },
     {

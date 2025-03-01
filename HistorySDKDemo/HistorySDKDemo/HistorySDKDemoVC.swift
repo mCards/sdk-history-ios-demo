@@ -7,8 +7,9 @@ import UIKit
 import CoreSDK
 import AuthSDK
 import HistorySDK
+import CardsSDK
 
-class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback {
+class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback, CSDKTokenRefreshCallback {
     
     // MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -37,14 +38,33 @@ class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback {
         // Set logging to the console and/or Firebase
         AuthSdkProvider.shared.setLogging(debugMode: true, loggingCallback: LoggingHandler())
         
-        
     }
     
-    func setupHistorySDK(withToken token: String) {
+    func setupCardsSDK(withToken token: String) {
+        CardsSdkProvider.shared.configure(accessToken: token, tokenRefreshCallback: self)
+        
+        CardsSdkProvider.shared.getCards { result in
+            switch result {
+            case .success(let cards):
+                for card in cards {
+                    self.setupHistorySDK(withToken: token, cardId: card.uuid)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func setupHistorySDK(withToken token: String, cardId: String) {
         HistorySdkProvider.shared.configure(accessToken: token, debugMode: true, tokenRefreshCallback: self, loggingCallback: LoggingHandler())
         
-        HistorySdkProvider.shared.getPaginatedActivities(cardId: "aa7de81f-36a5-45dc-80ab-e214270b73d7", sourceIndex: nil, pageSize: nil) { result in
-            print(result)
+        HistorySdkProvider.shared.getPaginatedActivities(cardId: cardId, sourceIndex: nil, pageSize: nil) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
@@ -53,7 +73,7 @@ class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback {
     }
     
     private func login(forceAuth: Bool) {
-        let savedPhoneNumber = "" // Save phone number used to pre-populate the login form
+        let savedPhoneNumber = "+1 405-293-8132" // Save phone number used to pre-populate the login form
         let forceAuth = forceAuth // Forces credentials entry if true
         let regionCode: RegionCode? = nil // Forces login into a specific region
         let deepLink: DeepLink? = nil // Parsed DeepLink object if the app was launched from a Firebase Link
@@ -81,7 +101,7 @@ class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback {
                 // Get any required data
                 let accessToken = authSuccess.jwts.accessToken
                 // Start using the SDK
-                self?.setupHistorySDK(withToken: accessToken)
+                self?.setupCardsSDK(withToken: accessToken)
             case .failure(let error):
                 // Handle error
                 print(error.localizedDescription)
