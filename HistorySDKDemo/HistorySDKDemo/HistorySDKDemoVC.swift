@@ -46,7 +46,7 @@ class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback, CSDKTokenRef
         CardsSdkProvider.shared.getCards { result in
             switch result {
             case .success(let cards):
-                for card in cards {
+                if let card = cards.first {
                     self.setupHistorySDK(withToken: token, cardId: card.uuid)
                 }
             case .failure(let error):
