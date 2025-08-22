@@ -93,7 +93,7 @@ class HistorySDKDemoVC: UIViewController, HSDKTokenRefreshCallback, CSDKTokenRef
         
         activityIndicator.startAnimating()
         
-        AuthSdkProvider.shared.login(args: loginArgs) { [weak self] result in
+        AuthSdkProvider.shared.auth0Authenticate(args: loginArgs) { [weak self] result in
             self?.activityIndicator.stopAnimating()
             
             switch result {
