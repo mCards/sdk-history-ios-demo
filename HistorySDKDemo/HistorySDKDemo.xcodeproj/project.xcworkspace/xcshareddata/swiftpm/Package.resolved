@@ -1,13 +1,13 @@
 {
-  "originHash" : "be61a71d0277f5183a8c96b049b084e008633cb1738aa79e6dbe87cc1d4b67fd",
+  "originHash" : "a44c548911f78550616bbc6b6fe36612e3c8504442a5e78ade059ef1bafb9892",
   "pins" : [
     {
       "identity" : "sdk-auth-ios-framework",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Wantsa/sdk-auth-ios-framework",
       "state" : {
-        "revision" : "72a375000a2ef248731ba609c336e6a94269f9e4",
-        "version" : "0.0.1"
+        "revision" : "e59a75b663f72233a7c2d9094c16c079b14a065d",
+        "version" : "1.0.6"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mCards/sdk-cards-ios-framework.git",
       "state" : {
-        "revision" : "3d0ac4c66164e76986d9dc9321e442064c0cd61a",
-        "version" : "0.0.13"
+        "revision" : "a1e9a9733bc68e2ca432d265474c297eab27fe05",
+        "version" : "1.0.0"
       }
     },
     {
@@ -24,8 +24,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mCards/sdk-history-ios-framework.git",
       "state" : {
-        "revision" : "43db86a8018d6add2a72802b5dd001a785bfde59",
-        "version" : "1.0.0"
+        "revision" : "de2fb56396c02160148647f42144b0eb1106d64f",
+        "version" : "1.0.4"
       }
     },
     {
@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Wantsa/sdk-model-ios-framework",
       "state" : {
-        "revision" : "ba5ab5dbd2193c860cf279d3558284f1124e37fd",
-        "version" : "0.0.4"
+        "revision" : "68560b8d709e76fdb83d16350afe360341a2abb7",
+        "version" : "1.1.4"
       }
     }
   ],
